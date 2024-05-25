@@ -151,6 +151,10 @@ public class MainActivity extends AppCompatActivity {
         updateStepText();
         Log.d(TAG, "Nombre de pas réinitialisé");
         broadcastStepCountUpdate();
+        if(isRunning){
+            stopStepCounting();
+            startStepCounting();
+        }
     }
 
     /**

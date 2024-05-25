@@ -32,10 +32,10 @@ public class StepCounterService extends Service implements SensorEventListener {
 
     private static final String TAG = "StepCounterService";
     private static final String SERVER_URL = "http://ec2-16-170-203-199.eu-north-1.compute.amazonaws.com:8080/Podometre_JEE/fs";
-    private static final String NOM_TEL = "Louis";
+    private static final String NOM_TEL = "Alan";
     private static final int SAMPLING_FREQUENCY = 100;
-    private static final int BUFFER_SIZE = 1024;
-    private static final double SENSOR_THRESHOLD = 0.5;
+    private static final int BUFFER_SIZE = 128;
+    private static final double SENSOR_THRESHOLD = 3.5;
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private Handler handler;
@@ -85,7 +85,7 @@ public class StepCounterService extends Service implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         float verticalAcceleration = event.values[2];
-        Log.d(TAG, "Changement détecté dans le capteur : " + verticalAcceleration);
+        //Log.d(TAG, "Changement détecté dans le capteur : " + verticalAcceleration);
         synchronized (accelerationList) {
             accelerationList.add(verticalAcceleration);
 
